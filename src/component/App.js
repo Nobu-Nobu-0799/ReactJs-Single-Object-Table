@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
-import Table from "../component/table/table";
 import '../App.css';
-
+import FieldValidation from "../component/fieldTester/field";
 
 export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-     jola:"klk",
-     data:{
-       part12:["klk", "papotico"],
-       part2:"manolin"
+        value:'',
+        regExpDate:"^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$",
      }
 
-   };
+   }
 
-  }
+  
 
     render(){
 
       return (
-        <Table {...this.state} Table={this.state.data}></Table>
-      );
+          <div>
+            <FieldValidation
+              values={this.state.value}
+              doesChangeValidation={this.state.regExpDate}
+            />
+
+          </div>
+      )
 
     }
 }
